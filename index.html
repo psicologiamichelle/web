@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mishell Fontalvo - Psicóloga Clínica y de la Salud</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Color Variables from Brand Palette */
+        :root {
+            --sage-green: #758874;
+            --dark-teal: #294442;
+            --beige: #d1b897;
+            --brown: #a77a53;
+            --dark-brown: #a36532;
+            --light-beige: #E8D5C4;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--sage-green);
+        }
+
+        .logo-heart {
+            width: 30px;
+            height: 30px;
+            background: var(--brown);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            margin-bottom: 5px;
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--sage-green);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--dark-teal);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-beige) 0%, var(--beige) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 0 2rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--sage-green);
+            font-weight: normal;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--sage-green);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            background: var(--dark-teal);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--sage-green);
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--sage-green);
+            padding: 4rem 0;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            color: white;
+            font-weight: normal;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .about .subtitle {
+            font-size: 1.3rem;
+            color: var(--beige);
+            margin-bottom: 2rem;
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1rem;
+            color: white;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Services Section */
+        .services {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .services h2 {
+            font-size: 3rem;
+            color: var(--dark-teal);
+            font-weight: normal;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: var(--beige);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: var(--dark-teal);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--dark-brown);
+            line-height: 1.6;
+        }
+
+        .service-card .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--brown);
+            margin-top: 1rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--beige);
+            padding: 4rem 0;
+        }
+
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .faq h2 {
+            font-size: 3rem;
+            color: var(--dark-teal);
+            font-weight: normal;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: var(--sage-green);
+            color: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: var(--dark-teal);
+        }
+
+        .faq-answer {
+            padding: 1.5rem;
+            color: var(--dark-brown);
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(45deg);
+        }
+
+        /* Products Section */
+        .products {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .products h2 {
+            font-size: 3rem;
+            color: var(--dark-teal);
+            font-weight: normal;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--sage-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-card .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--beige);
+            margin-bottom: 1rem;
+        }
+
+        .product-button {
+            background: var(--beige);
+            color: var(--dark-teal);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .product-button:hover {
+            background: white;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--dark-teal);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            color: white;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .contact p {
+            color: var(--beige);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .contact-item h3 {
+            color: var(--beige);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: white;
+            margin: 0;
+        }
+
+        /* Cookie Notice */
+        .cookie-notice {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            z-index: 1001;
+        }
+
+        .cookie-text {
+            flex: 1;
+            margin-right: 1rem;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cookie-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .cookie-btn.accept {
+            background: var(--sage-green);
+            border-color: var(--sage-green);
+        }
+
+        .cookie-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        .close-cookie {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about h2, .services h2, .faq h2, .products h2, .contact h2 {
+                font-size: 2rem;
+            }
+
+            .cookie-notice {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .services-grid, .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-heart"></div>
+                <div class="logo-text">MISHELL FONTALVO</div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Liberar para florecer</h1>
+                <p>Bienvenidos a un espacio de crecimiento y transformación donde florecemos juntos.</p>
+                <a href="#contacto" class="cta-button">Agendar cita</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-07-29%20at%209.11.32%20PM-z9WOMCuRnU3FFlO945frva7WYgan3l.jpeg" alt="Mishell Fontalvo - Psicóloga">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="sobre-mi">
+        <div class="about-container">
+            <h2>MISHELL FONTALVO</h2>
+            <p class="subtitle">Psicóloga Clínica y de la Salud</p>
+            <div class="about-text">
+                <p>Soy graduada en Psicología por la Universidad del Norte, Colombia. Adicionalmente, he completado exitosamente una Maestría en Psicología Clínica y de Salud y una Maestría en Psicoterapia Cognitivo-Conductual por la Universidad Europea de Madrid, España.</p>
+                
+                <p>Mi enfoque terapéutico se basa en la terapia cognitivo-conductual, integrando técnicas de tercera generación como mindfulness y terapia de aceptación y compromiso. Creo firmemente en la importancia de crear un espacio seguro y de confianza donde cada persona pueda explorar sus pensamientos, emociones y comportamientos de manera libre y sin juicio.</p>
+                
+                <p>Mi objetivo es acompañarte en tu proceso de crecimiento personal, ayudándote a desarrollar herramientas efectivas para enfrentar los desafíos de la vida y alcanzar un mayor bienestar emocional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <div class="services-container">
+            <h2>SERVICIOS</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Terapia Individual</h3>
+                    <p>Sesiones personalizadas enfocadas en tus necesidades específicas. Trabajamos juntos para identificar patrones, desarrollar estrategias de afrontamiento y promover el crecimiento personal.</p>
+                    <div class="price">$80.000 COP / sesión</div>
+                </div>
+                <div class="service-card">
+                    <h3>Terapia de Pareja</h3>
+                    <p>Fortalece tu relación a través de técnicas especializadas en comunicación, resolución de conflictos y construcción de vínculos más sólidos y saludables.</p>
+                    <div class="price">$120.000 COP / sesión</div>
+                </div>
+                <div class="service-card">
+                    <h3>Terapia Familiar</h3>
+                    <p>Mejora la dinámica familiar trabajando en la comunicación, establecimiento de límites y resolución de conflictos intergeneracionales.</p>
+                    <div class="price">$150.000 COP / sesión</div>
+                </div>
+                <div class="service-card">
+                    <h3>Evaluación Psicológica</h3>
+                    <p>Evaluaciones completas para diagnóstico y comprensión profunda de tu estado emocional y cognitivo actual.</p>
+                    <div class="price">$200.000 COP</div>
+                </div>
+                <div class="service-card">
+                    <h3>Terapia Online</h3>
+                    <p>Sesiones virtuales con la misma calidad y efectividad que las presenciales, adaptándose a tu horario y ubicación.</p>
+                    <div class="price">$70.000 COP / sesión</div>
+                </div>
+                <div class="service-card">
+                    <h3>Talleres Grupales</h3>
+                    <p>Talleres especializados en mindfulness, manejo de ansiedad, autoestima y habilidades sociales en formato grupal.</p>
+                    <div class="price">$50.000 COP / taller</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="faq-container">
+            <h2>PREGUNTAS FRECUENTES</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    ¿Cuánto dura una sesión de terapia?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Cada sesión tiene una duración de 50 minutos. Este tiempo permite un trabajo profundo y efectivo, manteniendo un marco terapéutico adecuado para el proceso de cambio.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    ¿Con qué frecuencia debo asistir a terapia?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Generalmente recomiendo sesiones semanales al inicio del proceso terapéutico. Según el progreso, podemos ajustar la frecuencia a quincenal o mensual. Cada caso es único y se personaliza según las necesidades individuales.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    ¿Cuánto tiempo dura un proceso terapéutico?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    La duración varía según cada persona y sus objetivos. Algunos procesos pueden durar entre 3-6 meses para objetivos específicos, mientras que otros pueden extenderse por más tiempo para cambios más profundos. Siempre evaluamos el progreso juntos.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    ¿Ofrecen terapia online?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Sí, ofrezco sesiones de terapia online a través de plataformas seguras y confidenciales. La terapia virtual ha demostrado ser igual de efectiva que la presencial y ofrece mayor flexibilidad de horarios y ubicación.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    ¿Qué métodos de pago aceptan?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Acepto pagos en efectivo, transferencias bancarias, Nequi, Daviplata y tarjetas de crédito/débito. También manejo planes de pago flexibles para procesos terapéuticos largos.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    ¿Manejan confidencialidad absoluta?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Absolutamente. Todo lo que se comparte en sesión está protegido por el secreto profesional. Solo en casos excepcionales donde exista riesgo para la vida propia o de terceros, se podría romper la confidencialidad, siempre informando previamente al paciente.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="productos">
+        <div class="products-container">
+            <h2>PRODUCTOS</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3>Curso de Mindfulness</h3>
+                    <p>Programa de 8 semanas para aprender técnicas de atención plena, reducir el estrés y mejorar tu bienestar emocional.</p>
+                    <div class="price">$250.000 COP</div>
+                    <button class="product-button">Más información</button>
+                </div>
+                <div class="product-card">
+                    <h3>Guía de Autoestima</h3>
+                    <p>E-book completo con ejercicios prácticos y estrategias para fortalecer tu autoestima y confianza personal.</p>
+                    <div class="price">$45.000 COP</div>
+                    <button class="product-button">Descargar</button>
+                </div>
+                <div class="product-card">
+                    <h3>Taller de Manejo de Ansiedad</h3>
+                    <p>Workshop intensivo de 4 horas para aprender técnicas efectivas de control y manejo de la ansiedad.</p>
+                    <div class="price">$120.000 COP</div>
+                    <button class="product-button">Inscribirse</button>
+                </div>
+                <div class="product-card">
+                    <h3>Consulta de Orientación</h3>
+                    <p>Sesión inicial de 30 minutos para conocer tu situación y determinar el mejor plan de tratamiento.</p>
+                    <div class="price">$40.000 COP</div>
+                    <button class="product-button">Agendar</button>
+                </div>
+                <div class="product-card">
+                    <h3>Programa de Bienestar</h3>
+                    <p>Plan integral de 3 meses que incluye sesiones individuales, material educativo y seguimiento personalizado.</p>
+                    <div class="price">$800.000 COP</div>
+                    <button class="product-button">Conocer más</button>
+                </div>
+                <div class="product-card">
+                    <h3>Meditaciones Guiadas</h3>
+                    <p>Colección de 20 meditaciones guiadas en audio para diferentes momentos del día y necesidades específicas.</p>
+                    <div class="price">$60.000 COP</div>
+                    <button class="product-button">Escuchar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="contact-container">
+            <h2>CONTACTO</h2>
+            <p>¿Listo para comenzar tu proceso de transformación? Contáctame para agendar tu primera cita y dar el primer paso hacia tu bienestar emocional.</p>
+            <a href="#" class="cta-button">Agendar Cita Ahora</a>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Teléfono</h3>
+                    <p>+57 300 123 4567</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p>mishell@psicologafontalvo.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Ubicación</h3>
+                    <p>Barranquilla, Colombia</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Horarios</h3>
+                    <p>Lun - Vie: 8:00 AM - 6:00 PM<br>Sáb: 9:00 AM - 2:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cookie Notice -->
+    <div class="cookie-notice" id="cookieNotice">
+        <div class="cookie-text">
+            Usamos cookies en nuestra página web para ver cómo interactúas con ella. Al aceptarlas, estás de acuerdo con nuestro uso de dichas cookies. 
+            <a href="#" style="color: var(--sage-green);">Política de privacidad</a>
+        </div>
+        <div class="cookie-buttons">
+            <button class="cookie-btn" onclick="declineCookies()">Opciones</button>
+            <button class="cookie-btn accept" onclick="acceptCookies()">Aceptar</button>
+        </div>
+        <button class="close-cookie" onclick="closeCookieNotice()">&times;</button>
+    </div>
+
+    <script>
+        function acceptCookies() {
+            document.getElementById('cookieNotice').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+        }
+
+        function declineCookies() {
+            document.getElementById('cookieNotice').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'false');
+        }
+
+        function closeCookieNotice() {
+            document.getElementById('cookieNotice').style.display = 'none';
+        }
+
+        // Check if cookies were already accepted
+        if (localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookieNotice').style.display = 'none';
+        }
+
+        // FAQ Toggle functionality
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                toggle.classList.remove('active');
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-toggle').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked FAQ
+                answer.classList.add('active');
+                toggle.classList.add('active');
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
